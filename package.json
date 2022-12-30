@@ -1,0 +1,72 @@
+{
+  "name": "@bpmn-io/react-form-js",
+  "version": "0.0.0",
+  "description": "Embed form-js in your React app",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs",
+      "umd": "./dist/react-form.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.es.js",
+  "umd:main": "dist/react-form.umd.js",
+  "files": [
+    "dist"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "all": "run-s lint build",
+    "lint": "eslint .",
+    "build": "cross-env NODE_ENV=production rollup -c --failAfterWarnings",
+    "build:watch": "cross-env NODE_ENV=development rollup -cw --failAfterWarnings",
+    "prepublishOnly": "npm run build",
+    "start": "run-p build:watch start:example",
+    "start:example": "npm start --workspace=example"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpmn-io/react-form-js.git"
+  },
+  "keywords": [
+    "form",
+    "forms",
+    "form-js",
+    "react-js",
+    "react"
+  ],
+  "author": {
+    "name": "Niklas Kiefer",
+    "url": "https://github.com/pinussilvestrus"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@bpmn-io/form-js": "^0.10.1",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "all": "^0.0.0",
+    "babel-preset-react-app": "^10.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.30.0",
+    "eslint-plugin-bpmn-io": "^0.16.0",
+    "npm-run": "^5.0.1",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^2.79.1"
+  },
+  "peerDependencies": {
+    "@bpmn-io/form-js": ">= 0.3"
+  }
+}
